@@ -3,21 +3,18 @@ on:
     branches:
       - main
   workflow_dispatch:
-  pull_request:
-    branches:
-      - main
 
 name: ✨ Deploy to Production
 env:
     DEPLOY_BRANCH: main
-    ENVIRONMENT: production
 
 jobs:
   Honeybadger:
     runs-on: ubuntu-latest
+    environment: production
     steps:
-    - uses: actions/checkout@v1
-    - uses: honeybadger-io/github-notify-deploy-action@v1
-      with:
-        api_key: ${{ secrets.HONEYBADGER_API_KEY }}
-        environment: ${{ env.ENVIRONMENT }}
+      - uses: actions/checkout@v1
+      - uses: honeybadger-io/github-notify-deploy-action@v1
+        with:
+          api_key: ${{ secrets.HONEYBADGER_API_KEY }}
+          environment: production
