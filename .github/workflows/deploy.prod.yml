@@ -14,7 +14,7 @@ jobs:
     environment: production
     steps:
       - uses: actions/checkout@v7
-      - uses: honeybadger-io/github-notify-deploy-action@v1
+      - uses: honeybadger-io/github-notify-deploy-action@v2
         with:
           api_key: ${{ secrets.HONEYBADGER_API_KEY }}
           environment: production
